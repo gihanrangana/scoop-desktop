@@ -14,6 +14,25 @@ struct GithubFile {
     file_type: String,
 }
 
+pub async fn get_available_buckets() -> Result<serde_json::Value, String> {
+    let client = reqwest::Client::new();
+
+    let response = client
+        .get(
+            "https://raw.githubusercontent.com/ScoopInstaller/Scoop/refs/heads/master/buckets.json",
+        )
+        .send()
+        .await
+        .map_err(|e| format!("Failed to send request: {}", e))?;
+
+    let buckets = response
+        .json()
+        .await
+        .map_err(|e| format!("Failed to parse JSON response: {}", e))?;
+
+    Ok(buckets)
+}
+
 pub async fn fetch_json_files() -> Result<ApiResponse, String> {
     let client = reqwest::Client::new();
 
