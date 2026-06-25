@@ -1,5 +1,5 @@
 [package]
-name = "tauri-app"
+name = "scoop-desktop"
 version = "0.1.0"
 description = "A Tauri App"
 authors = ["you"]
@@ -11,7 +11,7 @@ edition = "2021"
 # The `_lib` suffix may seem redundant but it is necessary
 # to make the lib name unique and wouldn't conflict with the bin name.
 # This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
-name = "scoop_lib"
+name = "scoop_desktop_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
@@ -22,8 +22,16 @@ tauri = { version = "2", features = [] }
 tauri-plugin-opener = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-reqwest = { version = "0.11", features = ["json"] }
-tokio = { version = "1.28", features = ["full"] }
-tauri-plugin-shell = "2"
-# rusqlite = { version = "0.36.0", features = ["bundled"] }
-tauri-plugin-sql = { version = "2" }
+windows = { version = "0.62.2", features = [
+  "Win32_UI_Shell",
+  "Win32_UI_WindowsAndMessaging",
+  "Win32_Graphics_Gdi",
+  "Win32_Foundation",
+] }
+base64 = "0.22"
+image = "0.25"
+windows-icons = "0.3"
+reqwest = { version = "0.13.4", features = ["json"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+url = "2.5"
+dotenvy = "0.15"

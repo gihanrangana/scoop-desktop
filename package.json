@@ -1,31 +1,58 @@
 {
-  "name": "tauri-app",
-  "private": true,
-  "version": "0.1.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "tauri": "tauri"
-  },
-  "dependencies": {
-    "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-opener": "^2",
-    "@tauri-apps/plugin-shell": "~2",
-    "@tauri-apps/plugin-sql": "~2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@tauri-apps/cli": "^2",
-    "@types/node": "^22.15.29",
-    "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "sass": "^1.89.1",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.3"
-  },
-  "packageManager": "pnpm@10.8.0+sha256.29bf2c5ceaea7991ee82eec15fe7162e0fad816d0c4a6b35a16c01d39274bf69"
+	"name": "scoop-desktop",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"tauri": "tauri",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"format": "biome format --write ."
+	},
+	"dependencies": {
+		"@base-ui/react": "^1.6.0",
+		"@fontsource-variable/inter": "^5.2.8",
+		"@fontsource-variable/montserrat": "^5.2.8",
+		"@tanstack/react-query": "^5.101.0",
+		"@tauri-apps/api": "^2",
+		"@tauri-apps/plugin-opener": "^2",
+		"add": "^2.0.6",
+		"badge": "^1.0.3",
+		"card": "^2.5.4",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"dlx": "^0.2.1",
+		"framer-motion": "^12.40.0",
+		"input": "^1.0.1",
+		"lenis": "^1.3.23",
+		"lucide-react": "^1.21.0",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"separator": "^0.1.0",
+		"shadcn": "^4.11.0",
+		"sidebar": "^1.0.2",
+		"skeleton": "^4.15.2",
+		"tabs": "^0.2.0",
+		"tailwind-merge": "^3.6.0",
+		"tw-animate-css": "^1.4.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.5.0",
+		"@shadcn/ui": "^0.0.4",
+		"@tailwindcss/vite": "^4.3.1",
+		"@tauri-apps/cli": "^2",
+		"@types/node": "^26.0.0",
+		"@types/react": "^19.1.8",
+		"@types/react-dom": "^19.1.6",
+		"@vitejs/plugin-react": "^6.0.2",
+		"autoprefixer": "^10.5.0",
+		"postcss": "^8.5.15",
+		"sass": "^1.101.0",
+		"tailwindcss": "^4.3.1",
+		"typescript": "~5.8.3",
+		"vite": "^8.0.16"
+	}
 }

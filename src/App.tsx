@@ -1,30 +1,41 @@
-import { useLayoutEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api/core';
-import styles from './App.module.scss';
-import PackageList from './components/PackageList/PackageList';
-
-type ScoopStatus = {
-    installed: boolean;
-    version?: string;
-    path?: string;
-    update_available?: boolean;
-};
+import { DatabaseIcon, HomeIcon, Package2Icon, SearchIcon } from "lucide-react";
+import AppShell from "@/components/layout/app-shell";
+import ScreenOutlet from "@/components/layout/screen-outlet";
+import { NavigationProvider } from "@/navigation";
 
 function App() {
-    const [scoopStatus, setScoopStatus] = useState<ScoopStatus>();
-
-    useLayoutEffect(() => {
-        (async () => {
-            const status = await invoke('check_scoop_installed');
-            setScoopStatus(status as ScoopStatus);
-        })();
-    }, []);
-
-    return <div className={styles.container}>
-        {/* <div className={styles.content}> */}
-            {scoopStatus?.installed && <PackageList />}
-        {/* </div> */}
-    </div>;
+	return (
+		<NavigationProvider initialRoute={{ name: "home" }}>
+			{/* <main className="min-h-svh w-full"> */}
+			<AppShell
+				sidebarItems={[
+					{
+						icon: <HomeIcon />,
+						label: "Home",
+						route: "home",
+					},
+					{
+						icon: <SearchIcon />,
+						label: "Browse",
+						route: "browse",
+					},
+					{
+						icon: <Package2Icon />,
+						label: "Installed",
+						route: "installed",
+					},
+					{
+						icon: <DatabaseIcon />,
+						label: "Buckets",
+						route: "buckets",
+					},
+				]}
+			>
+				<ScreenOutlet />
+			</AppShell>
+			{/* </main> */}
+		</NavigationProvider>
+	);
 }
 
 export default App;
